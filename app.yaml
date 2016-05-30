@@ -1,0 +1,28 @@
+#
+# Application identifier that must match
+# your app-id in the Google App Engine
+#
+application: YOUR_APP_IDENTIFIER_HERE
+version: 1
+runtime: python27
+api_version: 1
+threadsafe: yes
+
+handlers:
+- url: /favicon\.ico
+  static_files: assets/images/favicon.ico
+  upload: assets/images/favicon\.ico
+
+- url: /set_webhook
+  login: admin
+  script: main.app
+- url: /assets
+  static_dir: assets
+- url: .*
+  script: main.app
+
+libraries:
+- name: webapp2
+  version: "2.5.2"
+- name: PIL
+  version: latest
